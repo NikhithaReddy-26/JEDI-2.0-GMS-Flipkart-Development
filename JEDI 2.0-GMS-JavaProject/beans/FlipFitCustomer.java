@@ -7,6 +7,20 @@ public class FlipFitCustomer {
 	private int id;
 	private String name;
 	private String address;
+	private String password;
+	
+	@Override
+	public String toString() {
+		return "FlipFitCustomer [id=" + id + ", name=" + name + ", address=" + address + ", password=" + password
+				+ ", bookings=" + bookings + "]";
+	}
+	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	private List<Bookings> bookings;
 	
 	public List<Bookings> getBookings() {
