@@ -4,6 +4,20 @@ import java.util.List;
 
 public class Admin {
 
+	private String name;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	private String password;
 	private List<BookingRequest> pendingRequests;
 	private List<BookingRequest> approvedRequests;
 	
@@ -19,5 +33,8 @@ public class Admin {
 	public void setApprovedRequests(List<BookingRequest> approvedRequests) {
 		this.approvedRequests = approvedRequests;
 	}
-	
+	@Override
+	public String toString() {
+		return "Admin [pendingRequests=" + pendingRequests + ", approvedRequests=" + approvedRequests + "]";
+	}
 }
