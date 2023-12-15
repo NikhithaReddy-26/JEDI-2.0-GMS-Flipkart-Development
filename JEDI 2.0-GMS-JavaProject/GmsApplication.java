@@ -10,13 +10,14 @@ import com.flipkart.gms.beans.FlipFitCustomer;
 import com.flipkart.gms.beans.FlipFitOwner;
 import com.flipkart.gms.business.FlipFitCustomerService;
 import com.flipkart.gms.business.FlipFitOwnerService;
+import com.flipkart.gms.business.UserAuthService;
 
 @SpringBootApplication
 public class GmsApplication {
 
+	static UserAuthService userAuth=new UserAuthService();
 	public static FlipFitCustomerService customerService=new FlipFitCustomerService();
 	public static FlipFitOwnerService ownerService=new FlipFitOwnerService();
-	public static Admin admin=new Admin();
 	
 	static Scanner sc=new Scanner(System.in);
 	public static void main(String[] args) {
@@ -34,54 +35,37 @@ public class GmsApplication {
 		int choice=sc.nextInt();
 		switch (choice) {
 		case 1:
-			login();
+			System.out.println("Enter username: ");
+			String username=sc.next();
+			
+			System.out.println("Enter password: ");
+			String password=sc.next();
+			
+			System.out.println("Enter role: ");
+			String role=sc.next();
+			
+			userAuth.login(username, password, role);
+			
 			break;
 		case 2:
+			System.out.println("Enter username: ");
+			String name=sc.next();
+			
+			System.out.println("Enter password: ");
+			String password1=sc.next();
+			
+			System.out.println("Enter address: ");
+			String address=sc.next();
+			
+			System.out.println("Enter id: ");
+			int id=sc.nextInt();
+			
+			customerService.createCustomer(id, address, name, password1);
 			break;
 		case 3:
 			break;
 		case 4:
 			break;
 		}
-	}
-	public static void login() {
-		System.out.println("Enter username: ");
-		String username=sc.next();
-		
-		System.out.println("Enter password: ");
-		String password=sc.next();
-		
-		System.out.println("Enter role: ");
-		String role=sc.next();
-		//System.out.println(role+"1");
-		if(role=="admin") {
-			if(admin.getName()==username&&admin.getPassword()==password) {
-			System.out.println(admin);}
-			else {
-				System.out.println("Wrong Credentials");
-			}
-		}
-		else if(role.equals("customer") ) {
-			FlipFitCustomer customer=customerService.authenticate(username, password);
-			if(customer==null) {
-				System.out.println("wrong credentials");
-			}
-			else {
-				System.out.println(customer);
-			}
-		}
-		else if(role.equals("owner")) {
-			FlipFitOwner owner=ownerService.authenticate(username, password);
-			if(owner==null) {
-				System.out.println("wrong credentials");
-			}
-			else {
-				System.out.println(owner);
-			}
-		}
-		else {
-			System.out.println("wrong credentials or role");
-		}
-		
 	}
 }
