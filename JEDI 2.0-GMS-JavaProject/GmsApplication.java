@@ -2,17 +2,12 @@ package com.flipkart.gms;
 
 import java.util.Scanner;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.flipkart.gms.beans.Admin;
-import com.flipkart.gms.beans.FlipFitCustomer;
-import com.flipkart.gms.beans.FlipFitOwner;
 import com.flipkart.gms.business.FlipFitCustomerService;
 import com.flipkart.gms.business.FlipFitOwnerService;
 import com.flipkart.gms.business.UserAuthService;
 
-@SpringBootApplication
+
 public class GmsApplication {
 
 	static UserAuthService userAuth=new UserAuthService();
@@ -21,8 +16,7 @@ public class GmsApplication {
 	
 	static Scanner sc=new Scanner(System.in);
 	public static void main(String[] args) {
-		
-		SpringApplication.run(GmsApplication.class, args);
+
 		mainMenu();
 		
 	}

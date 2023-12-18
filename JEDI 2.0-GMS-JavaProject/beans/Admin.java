@@ -5,6 +5,9 @@ import java.util.List;
 public class Admin {
 
 	private String name;
+	private String password;
+	private List<BookingRequest> pendingRequests;
+	private List<BookingRequest> approvedRequests;
 	public String getName() {
 		return name;
 	}
@@ -17,9 +20,7 @@ public class Admin {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	private String password;
-	private List<BookingRequest> pendingRequests;
-	private List<BookingRequest> approvedRequests;
+
 	
 	public List<BookingRequest> getPendingRequests() {
 		return pendingRequests;

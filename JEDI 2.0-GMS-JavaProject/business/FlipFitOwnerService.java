@@ -2,13 +2,15 @@ package com.flipkart.gms.business;
 
 import java.util.List;
 
-import com.flipkart.gms.beans.FlipFitCustomer;
 import com.flipkart.gms.beans.FlipFitOwner;
+import com.flipkart.gms.beans.Slot;
 import com.flipkart.gms.dao.OwnerRepository;
+import com.flipkart.gms.dao.SlotRepository;
 
 public class FlipFitOwnerService {
 
 	OwnerRepository ownerRepository=new OwnerRepository();
+	SlotRepository slotRepository = new SlotRepository();
 	
 	public FlipFitOwner authenticate(String name, String password) {
 		List<FlipFitOwner> owners=ownerRepository.getOwners();
@@ -20,4 +22,9 @@ public class FlipFitOwnerService {
 		}
 		return null;
 	}
+
+    public List<Slot> viewAllSlotsByGymId(int gymId)
+	{
+		return slotRepository.getAllSlotByGymId(gymId);
+    }
 }
