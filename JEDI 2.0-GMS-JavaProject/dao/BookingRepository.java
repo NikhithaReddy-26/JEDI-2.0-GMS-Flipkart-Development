@@ -8,18 +8,8 @@ import java.util.Iterator;
 import java.util.List;
 
 public class BookingRepository implements BookingRepositoryInterface{
-    private final List<Bookings> bookingsList = new ArrayList<>();
+    private static List<Bookings> bookingsList = new ArrayList<>();
     private final SlotRepositoryInterface slotRepository = new SlotRepository();
-    public BookingRepository()
-    {
-        Bookings bookings = new Bookings();
-        bookings.setId(1);
-        bookings.setDate("17-12-2023");
-        bookings.setSlotId(1);
-        bookings.setGymCenterId(1);
-        bookings.setGymCenterId(1);
-        bookingsList.add(bookings);
-    }
 
     public List<Bookings> getBookingListByCustomerId(int customerId)
     {

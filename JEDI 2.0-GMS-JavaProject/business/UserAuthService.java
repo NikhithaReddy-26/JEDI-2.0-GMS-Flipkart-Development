@@ -47,7 +47,7 @@ public class UserAuthService implements UserAuthServiceInterface {
 			else if(role.equals("owner")) {
 				FlipFitOwner owner=ownerService.authenticate(username, password);
 				if(owner==null) {
-					System.out.println("wrong credentials");
+					System.out.println("wrong credentials for owner");
 				}
 				else {
 					gymOwnerClient.ownerMenu(owner.getId(),owner.isApproved());

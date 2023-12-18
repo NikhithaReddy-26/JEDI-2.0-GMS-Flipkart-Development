@@ -6,20 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SlotRepository implements SlotRepositoryInterface {
-    private final List<Slot> gymSlots = new ArrayList<>();
-    public SlotRepository()
-    {
-        Slot slot = new Slot();
-        slot.setId(1);
-        slot.setTime("5.00");
-        slot.setGymId(1);
-        gymSlots.add(slot);
-        Slot slot1 = new Slot();
-        slot1.setGymId(1);
-        slot1.setId(2);
-        slot1.setTime("6.00");
-        gymSlots.add(slot1);
-    }
+    private static List<Slot> gymSlots = new ArrayList<>();
     public List<Slot> getAllSlotByGymId(int gymId)
     {
         List<Slot> slotById = new ArrayList<>();

@@ -17,11 +17,9 @@ public class GymOwnerClient {
         if(!approved)
         {
             System.out.println("You are not a Authorized Gym Owner");
-            GmsApplication.mainMenu();
         }
         else
         {
-
             sc = new Scanner(System.in);
             while (true)
             {
@@ -51,7 +49,6 @@ public class GymOwnerClient {
                         getGymOwnerDetails(ownerId);
                         break;
                     case 6:
-                        GmsApplication.mainMenu();
                         return;
                     default:
                         System.out.println("Incorrect Choice");

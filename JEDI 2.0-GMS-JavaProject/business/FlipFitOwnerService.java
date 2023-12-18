@@ -17,9 +17,9 @@ public class FlipFitOwnerService implements FlipFitOwnerServiceInterface{
 
     public FlipFitOwner authenticate(String name, String password) {
 		List<FlipFitOwner> owners=ownerRepository.getOwners();
-		
-		for(int i=0;i<3;i++) {
-				if(owners.get(i)!=null&&owners.get(i).getName().equals(name) && owners.get(i).getPassword().equals(password)) {
+
+		for(int i=0;i<owners.size();i++) {
+			if(owners.get(i)!=null&&owners.get(i).getName().equals(name) && owners.get(i).getPassword().equals(password)) {
 				return owners.get(i);
 			}
 		}

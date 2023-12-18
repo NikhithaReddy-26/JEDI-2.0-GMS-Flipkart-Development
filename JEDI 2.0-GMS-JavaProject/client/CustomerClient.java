@@ -37,7 +37,6 @@ public class CustomerClient {
                     cancelBookedSlot(sc);
                     break;
                 case 5:
-                    GmsApplication.mainMenu();
                     return;
                 default:
                     System.out.println("Incorrect choice");

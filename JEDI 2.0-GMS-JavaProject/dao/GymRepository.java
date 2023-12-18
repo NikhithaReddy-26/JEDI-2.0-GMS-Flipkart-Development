@@ -7,28 +7,7 @@ import java.util.List;
 
 public class GymRepository implements GymRepositoryInterface
 {
-    public GymRepository()
-    {
-        Gym gym = new Gym();
-        gym.setId(1);
-        gym.setGymOwnerId(1);
-        gym.setName("ABC Gym");
-        gym.setLocation("Bangalore");
-        gym.setApproved(true);
-        gym.setNoOfSeats(100);
-        gym.setAmount(1000);
-        gymList.add(gym);
-        Gym gym1 = new Gym();
-        gym1.setId(2);
-        gym1.setGymOwnerId(1);
-        gym1.setName("XYZ Gym");
-        gym1.setLocation("Bangalore");
-        gym1.setApproved(false);
-        gym1.setNoOfSeats(100);
-        gym1.setAmount(2000);
-        gymList.add(gym1);
-    }
-    private List<Gym> gymList = new ArrayList<>();
+    private static List<Gym> gymList = new ArrayList<>();
 
     public ArrayList<Gym> getAllGyms()
     {

@@ -1,15 +1,13 @@
 package com.flipkart.gms.dao;
 
 import com.flipkart.gms.beans.Admin;
-import com.flipkart.gms.beans.FlipFitCustomer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.flipkart.gms.dao.CustomerRepository.customers;
 
 public class AdminRepository implements AdminRepositoryInterface{
-    List<Admin> adminList = new ArrayList<>();
+    private static List<Admin> adminList = new ArrayList<>();
     public void addAdmin()
     {
         Admin admin = new Admin();

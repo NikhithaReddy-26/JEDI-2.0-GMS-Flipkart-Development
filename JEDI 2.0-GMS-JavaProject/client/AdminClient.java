@@ -40,7 +40,6 @@ public class AdminClient {
                     flipFitAdminService.approveGymOwnerRequest(gymOwnerId);
                     break;
                 case 7:
-                    GmsApplication.mainMenu();
                     return;
 
                 default:
