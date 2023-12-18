@@ -63,4 +63,9 @@ public class FlipFitOwnerService implements FlipFitOwnerServiceInterface{
 	{
 		return ownerRepository.getGymOwnerById(ownerId);
 	}
+
+    public void addOwner(String name, String password1, String address, String email, long phoneNum, String gstNumber)
+	{
+		ownerRepository.addOwner(name,password1,address,email,phoneNum,gstNumber);
+    }
 }

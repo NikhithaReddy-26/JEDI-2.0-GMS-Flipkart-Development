@@ -18,7 +18,11 @@ public class CustomerRepository implements CustomerRepositoryInterface{
 		return customers;
 	}
 	
-	public void add(FlipFitCustomer customer) {
-		customers.add(customer);
+	public void addCustomer(String address,String name,String password) {
+		FlipFitCustomer flipFitCustomer = new FlipFitCustomer();
+		flipFitCustomer.setId(customers.size()+1);
+		flipFitCustomer.setAddress(address);
+		flipFitCustomer.setName(name);
+		flipFitCustomer.setPassword(password);
 	}
 }

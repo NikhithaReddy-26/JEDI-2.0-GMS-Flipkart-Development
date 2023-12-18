@@ -7,5 +7,5 @@ import java.util.List;
 public interface CustomerRepositoryInterface {
     List<FlipFitCustomer> getCustomers();
 
-    void add(FlipFitCustomer customer);
+    void addCustomer(String address, String name, String password);
 }

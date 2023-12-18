@@ -12,11 +12,7 @@ public interface FlipFitCustomerServiceInterface {
 
     String bookSlot(int customerId, int gymCenterId, int slotId, String date, Scanner sc);
 
-    void createCustomer(int id, String address, String name, String password);
-
-    void deleteCustomer(int id);
-
-    void updateCustomer(int id);
+    void createCustomer(String address, String name, String password);
 
     List<FlipFitCustomer> list();
 

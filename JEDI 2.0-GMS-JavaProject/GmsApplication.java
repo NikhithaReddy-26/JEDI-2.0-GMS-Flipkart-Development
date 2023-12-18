@@ -21,7 +21,7 @@ public class GmsApplication {
 	public static void mainMenu() {
 		System.out.println(" Press 1 for Login");
 		System.out.println(" Press 2 for Registration of customer");
-		System.out.println(" Press 3 for Update Password");
+		System.out.println(" Press 3 for Registration of Owner");
 		System.out.println(" Press 4 for exit");
 		
 		int choice=sc.nextInt();
@@ -49,12 +49,27 @@ public class GmsApplication {
 			System.out.println("Enter address: ");
 			String address=sc.next();
 			
-			System.out.println("Enter id: ");
-			int id=sc.nextInt();
-			
-			customerService.createCustomer(id, address, name, password1);
+			customerService.createCustomer(address, name, password1);
 			break;
 		case 3:
+			System.out.println("Enter username: ");
+			name=sc.next();
+
+			System.out.println("Enter password: ");
+			password1=sc.next();
+
+			System.out.println("Enter address: ");
+			address=sc.next();
+
+			System.out.println("Enter email: ");
+			String email=sc.next();
+
+			System.out.println("Enter phone number: ");
+			long phoneNum = sc.nextLong();
+
+			System.out.println("Enter gst number: ");
+			String gstNumber = sc.next();
+			ownerService.addOwner(name,password1,address,email,phoneNum,gstNumber);
 			break;
 		case 4:
 			break;

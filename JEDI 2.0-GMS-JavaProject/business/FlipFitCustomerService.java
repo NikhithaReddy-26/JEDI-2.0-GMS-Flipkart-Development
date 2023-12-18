@@ -60,22 +60,10 @@ public class FlipFitCustomerService implements FlipFitCustomerServiceInterface{
 		return "Booking Successful";
 	}
 
-	public void createCustomer(int id,String address, String name,String password) {
-		FlipFitCustomer customer=new FlipFitCustomer();
-		customer.setAddress(address);
-		customer.setId(id);
-		customer.setName(name);
-		customer.setPassword(password);
-		customerRepository.add(customer);
+	public void createCustomer(String address, String name,String password) {
+		customerRepository.addCustomer(address,name,password);
 	}
-	
-	public void deleteCustomer(int id) {
-		System.out.println("Cusomter deleted");
-	}
-	
-	public void updateCustomer(int id) {
-		System.out.println("Customer updated");
-	}
+
 	
 	public List<FlipFitCustomer> list(){
 		return null;

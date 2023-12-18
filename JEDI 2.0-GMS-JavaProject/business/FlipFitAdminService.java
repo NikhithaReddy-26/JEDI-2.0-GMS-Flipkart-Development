@@ -48,7 +48,7 @@ public class FlipFitAdminService implements FlipFitAdminServiceInterface{
         System.out.printf("%-15s\t", "Name");
         System.out.printf("%-15s\t", "Location");
         System.out.printf("%-15s\t", "No of Seats");
-        System.out.printf("%-15s\t", "GymOwnerEmail");
+        System.out.printf("%-15s\t", "GymOwnerId");
         System.out.printf("%-15s\t", "IsApproved");
         System.out.println();
         for(Gym gymCenter: gymList) {
@@ -56,7 +56,7 @@ public class FlipFitAdminService implements FlipFitAdminServiceInterface{
             System.out.printf("%-15s\t", gymCenter.getName());
             System.out.printf("%-15s\t", gymCenter.getLocation());
             System.out.printf("%-15s\t", gymCenter.getNoOfSeats());
-            System.out.printf("%-15s\t", gymCenter.getGymOwnerEmail());
+            System.out.printf("%-15s\t", gymCenter.getGymOwnerId());
 
             if(gymCenter.isApproved())
             {
@@ -100,7 +100,7 @@ public class FlipFitAdminService implements FlipFitAdminServiceInterface{
         System.out.printf("%-15s\t", "Name");
         System.out.printf("%-15s\t", "Location");
         System.out.printf("%-15s\t", "No of Seats");
-        System.out.printf("%-15s\t", "GymOwnerEmail");
+        System.out.printf("%-15s\t", "GymOwnerId");
         System.out.println();
         for(Gym gymCenter: gymList) {
 
@@ -110,7 +110,7 @@ public class FlipFitAdminService implements FlipFitAdminServiceInterface{
                 System.out.printf("%-15s\t", gymCenter.getName());
                 System.out.printf("%-15s\t", gymCenter.getLocation());
                 System.out.printf("%-15s\t", gymCenter.getNoOfSeats());
-                System.out.printf("%-15s\t", gymCenter.getGymOwnerEmail());
+                System.out.printf("%-15s\t", gymCenter.getGymOwnerId());
             }
             System.out.println();
         }

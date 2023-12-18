@@ -9,4 +9,6 @@ public interface FlipFitOwnerServiceInterface {
     FlipFitOwner authenticate(String name, String password);
 
     List<Slot> viewAllSlotsByGymId(int gymId);
+
+    void addOwner(String name, String password1, String address, String email, long phoneNum, String gstNumber);
 }

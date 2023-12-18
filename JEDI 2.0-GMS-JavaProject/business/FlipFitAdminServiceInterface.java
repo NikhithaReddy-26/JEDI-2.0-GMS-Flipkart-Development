@@ -9,4 +9,4 @@ public interface FlipFitAdminServiceInterface {
         void approveGymOwnerRequest(int gymOwnerId);
     }
 
-}
+

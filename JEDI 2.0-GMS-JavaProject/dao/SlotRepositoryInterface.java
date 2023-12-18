@@ -10,4 +10,6 @@ public interface SlotRepositoryInterface {
     Slot getSlotById(int slotId);
 
     List<Slot> getSlotListByTime(String slotTiming);
+
+    void addSlot(int gymId, String time);
 }

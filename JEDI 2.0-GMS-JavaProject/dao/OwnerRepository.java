@@ -41,4 +41,18 @@ public class OwnerRepository implements OwnerRepositoryInterface {
 		}
 		return null;
 	}
+
+	public void addOwner(String name, String password, String address, String email, long phoneNum, String gstNumber)
+	{
+		FlipFitOwner flipFitOwner = new FlipFitOwner();
+		flipFitOwner.setId(owners.size()+1);
+		flipFitOwner.setEmail(email);
+		flipFitOwner.setName(name);
+		flipFitOwner.setPassword(password);
+		flipFitOwner.setApproved(false);
+		flipFitOwner.setAddress(address);
+		flipFitOwner.setPhone(phoneNum);
+		flipFitOwner.setGstNumber(gstNumber);
+		owners.add(flipFitOwner);
+	}
 }
