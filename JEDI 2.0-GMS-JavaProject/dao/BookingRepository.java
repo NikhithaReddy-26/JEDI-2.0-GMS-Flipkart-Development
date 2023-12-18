@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class BookingRepository {
-    private List<Bookings> bookingsList = new ArrayList<>();
-    private SlotRepository slotRepository = new SlotRepository();
+public class BookingRepository implements BookingRepositoryInterface{
+    private final List<Bookings> bookingsList = new ArrayList<>();
+    private final SlotRepositoryInterface slotRepository = new SlotRepository();
     public BookingRepository()
     {
         Bookings bookings = new Bookings();

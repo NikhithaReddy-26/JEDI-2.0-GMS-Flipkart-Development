@@ -8,18 +8,15 @@ import com.flipkart.gms.beans.FlipFitCustomer;
 import com.flipkart.gms.beans.Gym;
 import com.flipkart.gms.beans.Slot;
 import com.flipkart.gms.client.PaymentClient;
-import com.flipkart.gms.dao.BookingRepository;
-import com.flipkart.gms.dao.CustomerRepository;
+import com.flipkart.gms.dao.*;
 import com.flipkart.gms.beans.Bookings;
-import com.flipkart.gms.dao.GymRepository;
-import com.flipkart.gms.dao.SlotRepository;
 
-public class FlipFitCustomerService {
+public class FlipFitCustomerService implements FlipFitCustomerServiceInterface{
 
-	CustomerRepository customerRepository = new CustomerRepository();
-	GymRepository gymRepository = new GymRepository();
-	BookingRepository bookingRepository = new BookingRepository();
-	SlotRepository slotRepository = new SlotRepository();
+	CustomerRepositoryInterface customerRepository = new CustomerRepository();
+	GymRepositoryInterface gymRepository = new GymRepository();
+	BookingRepositoryInterface bookingRepository = new BookingRepository();
+	SlotRepositoryInterface slotRepository = new SlotRepository();
 
 	PaymentClient paymentClient = new PaymentClient();
 

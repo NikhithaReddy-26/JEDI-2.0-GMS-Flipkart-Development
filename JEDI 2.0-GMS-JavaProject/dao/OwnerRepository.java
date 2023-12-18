@@ -5,9 +5,9 @@ import java.util.List;
 
 import com.flipkart.gms.beans.FlipFitOwner;
 
-public class OwnerRepository {
+public class OwnerRepository implements OwnerRepositoryInterface {
 
-	private List<FlipFitOwner> owners=new ArrayList<FlipFitOwner>();
+	private final List<FlipFitOwner> owners=new ArrayList<FlipFitOwner>();
 	public List<FlipFitOwner> getOwners() {
 		FlipFitOwner owner1=new FlipFitOwner();
 		owner1.setId(1);

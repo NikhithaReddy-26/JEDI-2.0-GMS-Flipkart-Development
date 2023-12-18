@@ -8,7 +8,7 @@ import java.util.List;
 
 import static com.flipkart.gms.dao.CustomerRepository.customers;
 
-public class AdminRepository {
+public class AdminRepository implements AdminRepositoryInterface{
     List<Admin> adminList = new ArrayList<>();
     public void addAdmin()
     {

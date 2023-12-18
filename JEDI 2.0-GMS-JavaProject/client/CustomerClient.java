@@ -5,15 +5,18 @@ import com.flipkart.gms.beans.Bookings;
 import com.flipkart.gms.beans.Gym;
 import com.flipkart.gms.beans.Slot;
 import com.flipkart.gms.business.FlipFitCustomerService;
+import com.flipkart.gms.business.FlipFitCustomerServiceInterface;
 import com.flipkart.gms.business.FlipFitOwnerService;
+import com.flipkart.gms.business.FlipFitOwnerServiceInterface;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class CustomerClient {
 
-    private FlipFitCustomerService flipFitCustomerService = new FlipFitCustomerService();
-    private FlipFitOwnerService flipFitOwnerService = new FlipFitOwnerService();
+    private final FlipFitCustomerServiceInterface flipFitCustomerService = new FlipFitCustomerService() {
+    };
+    private final FlipFitOwnerServiceInterface flipFitOwnerService = new FlipFitOwnerService();
     public void customerMenu(int customerId)
     {
         while(true) {
@@ -108,6 +111,5 @@ public class CustomerClient {
         System.out.println("Enter the date in DD-MM-YYYY format: ");
         String date = sc.next();
         System.out.println(flipFitCustomerService.bookSlot(customerId,gymCentreId,slotId,date,sc));
-        ;
     }
 }

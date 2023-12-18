@@ -5,7 +5,7 @@ import com.flipkart.gms.beans.Payment;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PaymentRepository {
+public class PaymentRepository implements PaymentRepositoryInterface {
     List<Payment> paymentList = new ArrayList<>();
     public void addPayment(int customerId, String upiId, double amount)
     {

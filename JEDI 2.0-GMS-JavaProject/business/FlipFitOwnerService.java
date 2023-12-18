@@ -5,18 +5,17 @@ import java.util.List;
 import com.flipkart.gms.beans.FlipFitOwner;
 import com.flipkart.gms.beans.Gym;
 import com.flipkart.gms.beans.Slot;
-import com.flipkart.gms.dao.GymRepository;
-import com.flipkart.gms.dao.OwnerRepository;
-import com.flipkart.gms.dao.SlotRepository;
+import com.flipkart.gms.dao.*;
 
-public class FlipFitOwnerService {
+public class FlipFitOwnerService implements FlipFitOwnerServiceInterface{
 
-	OwnerRepository ownerRepository=new OwnerRepository();
-	SlotRepository slotRepository = new SlotRepository();
 
-	GymRepository gymRepository = new GymRepository();
-	
-	public FlipFitOwner authenticate(String name, String password) {
+	OwnerRepositoryInterface ownerRepository=new OwnerRepository();
+	SlotRepositoryInterface slotRepository = new SlotRepository();
+    GymRepositoryInterface gymRepository = new GymRepository();
+
+
+    public FlipFitOwner authenticate(String name, String password) {
 		List<FlipFitOwner> owners=ownerRepository.getOwners();
 		
 		for(int i=0;i<3;i++) {

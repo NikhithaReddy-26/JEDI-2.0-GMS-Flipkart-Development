@@ -7,18 +7,19 @@ import com.flipkart.gms.client.AdminClient;
 import com.flipkart.gms.client.CustomerClient;
 import com.flipkart.gms.client.GymOwnerClient;
 import com.flipkart.gms.dao.AdminRepository;
+import com.flipkart.gms.dao.AdminRepositoryInterface;
 
 import java.util.ArrayList;
 
-public class UserAuthService {
-	public  FlipFitCustomerService customerService=new FlipFitCustomerService();
-	public FlipFitOwnerService ownerService=new FlipFitOwnerService();
-	public  AdminRepository adminRepository=new AdminRepository();
-	private  AdminClient adminClient = new AdminClient();
+public class UserAuthService implements UserAuthServiceInterface {
+	public  FlipFitCustomerServiceInterface customerService=new FlipFitCustomerService();
+	public FlipFitOwnerServiceInterface ownerService=new FlipFitOwnerService();
+	public AdminRepositoryInterface adminRepository=new AdminRepository();
+	private final AdminClient adminClient = new AdminClient();
 
-	private CustomerClient customerClient = new CustomerClient();
+	private final CustomerClient customerClient = new CustomerClient();
 
-	private GymOwnerClient gymOwnerClient = new GymOwnerClient();
+	private final GymOwnerClient gymOwnerClient = new GymOwnerClient();
 
 	public void login(String username,String password,String role) {
 			

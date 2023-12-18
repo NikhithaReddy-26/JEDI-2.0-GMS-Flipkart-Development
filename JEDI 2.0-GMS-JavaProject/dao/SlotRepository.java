@@ -5,8 +5,8 @@ import com.flipkart.gms.beans.Slot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SlotRepository {
-    private List<Slot> gymSlots = new ArrayList<>();
+public class SlotRepository implements SlotRepositoryInterface {
+    private final List<Slot> gymSlots = new ArrayList<>();
     public SlotRepository()
     {
         Slot slot = new Slot();

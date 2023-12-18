@@ -3,16 +3,14 @@ package com.flipkart.gms;
 import java.util.Scanner;
 
 
-import com.flipkart.gms.business.FlipFitCustomerService;
-import com.flipkart.gms.business.FlipFitOwnerService;
-import com.flipkart.gms.business.UserAuthService;
+import com.flipkart.gms.business.*;
 
 
 public class GmsApplication {
 
-	static UserAuthService userAuth=new UserAuthService();
-	public static FlipFitCustomerService customerService=new FlipFitCustomerService();
-	public static FlipFitOwnerService ownerService=new FlipFitOwnerService();
+	public static UserAuthServiceInterface userAuth =  new UserAuthService();
+	public static FlipFitCustomerServiceInterface customerService=new FlipFitCustomerService();
+	public static FlipFitOwnerServiceInterface ownerService=new FlipFitOwnerService();
 	
 	static Scanner sc=new Scanner(System.in);
 	public static void main(String[] args) {

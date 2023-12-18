@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.flipkart.gms.beans.FlipFitCustomer;
 
-public class CustomerRepository {
+public class CustomerRepository implements CustomerRepositoryInterface{
 
 	public static List<FlipFitCustomer> customers=new ArrayList<FlipFitCustomer>(); 
 	

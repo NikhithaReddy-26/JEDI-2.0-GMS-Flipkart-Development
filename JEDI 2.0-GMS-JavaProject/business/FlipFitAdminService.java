@@ -3,14 +3,16 @@ package com.flipkart.gms.business;
 import com.flipkart.gms.beans.FlipFitOwner;
 import com.flipkart.gms.beans.Gym;
 import com.flipkart.gms.dao.GymRepository;
+import com.flipkart.gms.dao.GymRepositoryInterface;
 import com.flipkart.gms.dao.OwnerRepository;
+import com.flipkart.gms.dao.OwnerRepositoryInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlipFitAdminService {
-    private OwnerRepository ownerRepository = new OwnerRepository();
-    private GymRepository gymRepository = new GymRepository();
+public class FlipFitAdminService implements FlipFitAdminServiceInterface{
+    private final OwnerRepositoryInterface ownerRepository = new OwnerRepository();
+    private final GymRepositoryInterface gymRepository = new GymRepository();
     public void viewAllGymOwners() {
         List<FlipFitOwner> ownerList = ownerRepository.getOwners();
         System.out.printf("%-15s\t", "Id");
@@ -36,7 +38,7 @@ public class FlipFitAdminService {
             {
 				System.out.printf("%-8s\t", "No");
             }
-            System.out.println("");
+            System.out.println();
         }
     }
 
@@ -64,7 +66,7 @@ public class FlipFitAdminService {
             {
 				System.out.printf("%-8s\t", "No");
             }
-            System.out.println("");
+            System.out.println();
         }
         System.out.println("-------------------------------------");
     }
@@ -88,7 +90,7 @@ public class FlipFitAdminService {
                 System.out.printf("%-15s\t", gymOwner.getName());
                 System.out.printf("%-15s\t", gymOwner.getPhone());
             }
-            System.out.println("");
+            System.out.println();
         }
     }
 
@@ -110,7 +112,7 @@ public class FlipFitAdminService {
                 System.out.printf("%-15s\t", gymCenter.getNoOfSeats());
                 System.out.printf("%-15s\t", gymCenter.getGymOwnerEmail());
             }
-            System.out.println("");
+            System.out.println();
         }
     }
 

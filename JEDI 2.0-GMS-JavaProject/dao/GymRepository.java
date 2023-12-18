@@ -5,7 +5,7 @@ import com.flipkart.gms.beans.Gym;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GymRepository
+public class GymRepository implements GymRepositoryInterface
 {
     public GymRepository()
     {
