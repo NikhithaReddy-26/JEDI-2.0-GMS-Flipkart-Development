@@ -17,5 +17,4 @@ public class FlipFitOwner {
 	private String gstNumber;
 	private boolean isApproved;
 	private String password;
-	
 }

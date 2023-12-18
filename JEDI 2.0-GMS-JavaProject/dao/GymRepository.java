@@ -11,7 +11,7 @@ public class GymRepository
     {
         Gym gym = new Gym();
         gym.setId(1);
-        gym.setGymOwnerEmail("abc@gmail.com");
+        gym.setGymOwnerId(1);
         gym.setName("ABC Gym");
         gym.setLocation("Bangalore");
         gym.setApproved(true);
@@ -20,7 +20,7 @@ public class GymRepository
         gymList.add(gym);
         Gym gym1 = new Gym();
         gym1.setId(2);
-        gym1.setGymOwnerEmail("xyz@gmail.com");
+        gym1.setGymOwnerId(1);
         gym1.setName("XYZ Gym");
         gym1.setLocation("Bangalore");
         gym1.setApproved(false);
@@ -46,5 +46,31 @@ public class GymRepository
             }
         }
         return null;
+    }
+
+    public void registerGym(int ownerId, String gymName, String gymLocation, int seats, double amount)
+    {
+        Gym gym = new Gym();
+        gym.setId(gymList.size()+1);
+        gym.setApproved(false);
+        gym.setLocation(gymLocation);
+        gym.setGymOwnerId(ownerId);
+        gym.setAmount(seats);
+        gym.setAmount(amount);
+        gym.setName(gymName);
+        gymList.add(gym);
+    }
+
+    public List<Gym> getGymByOwnerId(int ownerId)
+    {
+        List<Gym> ownerGyms = new ArrayList<>();
+        for(Gym gym:gymList)
+        {
+            if(gym.getGymOwnerId() == ownerId)
+            {
+                ownerGyms.add(gym);
+            }
+        }
+        return ownerGyms;
     }
 }

@@ -57,4 +57,13 @@ public class SlotRepository {
         }
         return slotListByTime;
     }
+
+    public void addSlot(int gymId, String time)
+    {
+        Slot slot = new Slot();
+        slot.setId(getAllSlotByGymId(gymId).size() + 1);
+        slot.setGymId(gymId);
+        slot.setTime(time);
+        gymSlots.add(slot);
+    }
 }

@@ -6,7 +6,7 @@ import lombok.Data;
 public class Gym
 {
 	private int id;
-	private String gymOwnerEmail;
+	private int gymOwnerId;
 	private String name;
 	private String location;
 	private int noOfSeats;
