@@ -10,136 +10,135 @@ import com.flipkart.gms.dao.OwnerRepositoryInterface;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlipFitAdminService implements FlipFitAdminServiceInterface{
+/**
+ * This class represents the administrative services for managing FlipFit gym owners and gym centers.
+ */
+public class FlipFitAdminService implements FlipFitAdminServiceInterface {
+
     private final OwnerRepositoryInterface ownerRepository = new OwnerRepository();
     private final GymRepositoryInterface gymRepository = new GymRepository();
+
+    /**
+     * Retrieves and displays details of all gym owners.
+     */
     public void viewAllGymOwners() {
         List<FlipFitOwner> ownerList = ownerRepository.getOwners();
-        System.out.printf("%-15s\t", "Id");
-        System.out.printf("%-15s\t", "Address");
-        System.out.printf("%-15s\t", "Email");
-        System.out.printf("%-15s\t", "GST Number");
-        System.out.printf("%-15s\t", "Name");
-        System.out.printf("%-15s\t", "Phone");
-        System.out.printf("%-15s\t", "IsApproved");
-        System.out.println();
-        for(FlipFitOwner gymOwner: ownerList) {
-            System.out.printf("%-15s\t", gymOwner.getId());
-            System.out.printf("%-15s\t", gymOwner.getAddress());
-            System.out.printf("%-15s\t", gymOwner.getEmail());
-            System.out.printf("%-15s\t", gymOwner.getGstNumber());
-            System.out.printf("%-15s\t", gymOwner.getName());
-            System.out.printf("%-15s\t", gymOwner.getPhone());
-            if(gymOwner.isApproved())
-            {
-				System.out.printf("%-8s\t", "Yes");
-            }
-            else
-            {
-				System.out.printf("%-8s\t", "No");
-            }
-            System.out.println();
+
+        // Display headers
+        displayOwnerHeaders();
+
+        // Display details of all gym owners
+        for (FlipFitOwner gymOwner : ownerList) {
+            displayOwnerDetails(gymOwner);
         }
     }
 
+    // Helper method to display owner details headers
+    private void displayOwnerHeaders() {
+        System.out.printf("%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t\n",
+                "Id", "Address", "Email", "GST Number", "Name", "Phone", "IsApproved");
+    }
+
+    // Helper method to display individual owner details
+    private void displayOwnerDetails(FlipFitOwner gymOwner) {
+        System.out.printf("%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-8s\t\n",
+                gymOwner.getId(), gymOwner.getAddress(), gymOwner.getEmail(),
+                gymOwner.getGstNumber(), gymOwner.getName(), gymOwner.getPhone(),
+                gymOwner.isApproved() ? "Yes" : "No");
+    }
+
+    /**
+     * Retrieves and displays details of all gym centers.
+     */
     public void viewAllGymCenters() {
         ArrayList<Gym> gymList = gymRepository.getAllGyms();
-        System.out.printf("%-15s\t", "Id");
-        System.out.printf("%-15s\t", "Name");
-        System.out.printf("%-15s\t", "Location");
-        System.out.printf("%-15s\t", "No of Seats");
-        System.out.printf("%-15s\t", "GymOwnerId");
-        System.out.printf("%-15s\t", "IsApproved");
-        System.out.println();
-        for(Gym gymCenter: gymList) {
-            System.out.printf("%-15s\t", gymCenter.getId());
-            System.out.printf("%-15s\t", gymCenter.getName());
-            System.out.printf("%-15s\t", gymCenter.getLocation());
-            System.out.printf("%-15s\t", gymCenter.getNoOfSeats());
-            System.out.printf("%-15s\t", gymCenter.getGymOwnerId());
 
-            if(gymCenter.isApproved())
-            {
-				System.out.printf("%-8s\t", "Yes");
-            }
-            else
-            {
-				System.out.printf("%-8s\t", "No");
-            }
-            System.out.println();
+        // Display headers
+        displayGymHeaders();
+
+        // Display details of all gym centers
+        for (Gym gymCenter : gymList) {
+            displayGymDetails(gymCenter);
         }
+
         System.out.println("-------------------------------------");
     }
 
+    // Helper method to display gym details headers
+    private void displayGymHeaders() {
+        System.out.printf("%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-8s\t\n",
+                "Id", "Name", "Location", "No of Seats", "GymOwnerId", "IsApproved");
+    }
+
+    // Helper method to display individual gym details
+    private void displayGymDetails(Gym gymCenter) {
+        System.out.printf("%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-8s\t\n",
+                gymCenter.getId(), gymCenter.getName(), gymCenter.getLocation(),
+                gymCenter.getNoOfSeats(), gymCenter.getGymOwnerId(),
+                gymCenter.isApproved() ? "Yes" : "No");
+    }
+
+    /**
+     * Retrieves and displays pending gym owner requests yet to be approved.
+     */
     public void viewPendingGymOwnerRequests() {
         List<FlipFitOwner> flipFitOwnerList = ownerRepository.getOwners();
-        System.out.printf("%-15s\t", "Id");
-        System.out.printf("%-15s\t", "Address");
-        System.out.printf("%-15s\t", "Email");
-        System.out.printf("%-15s\t", "GST Number");
-        System.out.printf("%-15s\t", "Name");
-        System.out.printf("%-15s\t", "Phone");
-        System.out.println();
-        for(FlipFitOwner gymOwner: flipFitOwnerList) {
-            if(!gymOwner.isApproved())
-            {
-                System.out.printf("%-15s\t", gymOwner.getId());
-                System.out.printf("%-15s\t", gymOwner.getAddress());
-                System.out.printf("%-15s\t", gymOwner.getEmail());
-                System.out.printf("%-15s\t", gymOwner.getGstNumber());
-                System.out.printf("%-15s\t", gymOwner.getName());
-                System.out.printf("%-15s\t", gymOwner.getPhone());
+
+        // Display headers
+        displayOwnerHeaders();
+
+        // Display pending gym owner requests
+        for (FlipFitOwner gymOwner : flipFitOwnerList) {
+            if (!gymOwner.isApproved()) {
+                displayOwnerDetails(gymOwner);
             }
-            System.out.println();
         }
     }
 
+    /**
+     * Retrieves and displays pending gym requests yet to be approved.
+     */
     public void viewPendingGymRequests() {
         List<Gym> gymList = gymRepository.getAllGyms();
-        System.out.printf("%-15s\t", "Id");
-        System.out.printf("%-15s\t", "Name");
-        System.out.printf("%-15s\t", "Location");
-        System.out.printf("%-15s\t", "No of Seats");
-        System.out.printf("%-15s\t", "GymOwnerId");
-        System.out.println();
-        for(Gym gymCenter: gymList) {
 
-            if(!gymCenter.isApproved())
-            {
-                System.out.printf("%-15s\t", gymCenter.getId());
-                System.out.printf("%-15s\t", gymCenter.getName());
-                System.out.printf("%-15s\t", gymCenter.getLocation());
-                System.out.printf("%-15s\t", gymCenter.getNoOfSeats());
-                System.out.printf("%-15s\t", gymCenter.getGymOwnerId());
+        // Display headers
+        displayGymHeaders();
+
+        // Display pending gym requests
+        for (Gym gymCenter : gymList) {
+            if (!gymCenter.isApproved()) {
+                displayGymDetails(gymCenter);
             }
-            System.out.println();
         }
     }
 
-    public void approveGymRequest(int gymId)
-    {
+    /**
+     * Approves a gym request by its ID.
+     *
+     * @param gymId The ID of the gym to be approved.
+     */
+    public void approveGymRequest(int gymId) {
         Gym gym = gymRepository.getGymById(gymId);
-        if(gym!=null)
-        {
+        if (gym != null) {
             gym.setApproved(true);
-            System.out.println("Gym is successfully approved of ID "+gymId);
-        }
-        else {
-            System.out.println("Invalid Gym Id "+gymId);
+            System.out.println("Gym is successfully approved of ID " + gymId);
+        } else {
+            System.out.println("Invalid Gym Id " + gymId);
         }
     }
 
-    public void approveGymOwnerRequest(int gymOwnerId)
-    {
+    /**
+     * Approves a gym owner request by their ID.
+     *
+     * @param gymOwnerId The ID of the gym owner to be approved.
+     */
+    public void approveGymOwnerRequest(int gymOwnerId) {
         FlipFitOwner flipFitOwner = ownerRepository.getGymOwnerById(gymOwnerId);
-        if(flipFitOwner!=null)
-        {
+        if (flipFitOwner != null) {
             flipFitOwner.setApproved(true);
-            System.out.println("Flip Fit Gym Owner successfully Approved ID: "+gymOwnerId);
-        }
-        else {
-            System.out.println("Invalid Gym Owner Id "+gymOwnerId);
+            System.out.println("Flip Fit Gym Owner successfully Approved ID: " + gymOwnerId);
+        } else {
+            System.out.println("Invalid Gym Owner Id " + gymOwnerId);
         }
     }
-
 }

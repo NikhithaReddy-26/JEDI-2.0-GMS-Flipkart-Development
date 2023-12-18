@@ -11,6 +11,10 @@ import com.flipkart.gms.client.PaymentClient;
 import com.flipkart.gms.dao.*;
 import com.flipkart.gms.beans.Bookings;
 
+/**
+ * Represents services provided to FlipFit customers for gym bookings and management.
+ */
+
 public class FlipFitCustomerService implements FlipFitCustomerServiceInterface{
 
 	CustomerRepositoryInterface customerRepository = new CustomerRepository();
@@ -20,11 +24,28 @@ public class FlipFitCustomerService implements FlipFitCustomerServiceInterface{
 
 	PaymentClient paymentClient = new PaymentClient();
 
+	/**
+	 * Retrieves all bookings made by a specific customer.
+	 *
+	 * @param customerId The ID of the customer whose bookings are to be retrieved.
+	 * @return A list of bookings made by the specified customer.
+	 */
+
 	public List<Bookings> viewAllBookings(int customerId)
 	{
 		return bookingRepository.getBookingListByCustomerId(customerId);
 	}
 
+	/**
+	 * Books a slot for a customer at a specific gym on a given date.
+	 *
+	 * @param customerId  The ID of the customer booking the slot.
+	 * @param gymCenterId The ID of the gym center for which the slot is being booked.
+	 * @param slotId      The ID of the slot being booked.
+	 * @param date        The date for which the slot is being booked.
+	 * @param sc          Scanner object for user input.
+	 * @return A message indicating the success or failure of the booking attempt.
+	 */
 	public String bookSlot(int customerId, int gymCenterId, int slotId, String date, Scanner sc)
 	{
 		Slot slot = slotRepository.getSlotById(slotId);
@@ -60,14 +81,34 @@ public class FlipFitCustomerService implements FlipFitCustomerServiceInterface{
 		return "Booking Successful";
 	}
 
+	/**
+	 * Creates a new customer with the provided details.
+	 *
+	 * @param address  The address of the new customer.
+	 * @param name     The name of the new customer.
+	 * @param password The password of the new customer.
+	 */
 	public void createCustomer(String address, String name,String password) {
 		customerRepository.addCustomer(address,name,password);
 	}
 
+	/**
+	 * Lists all customers.
+	 *
+	 * @return A list of all customers.
+	 */
 	
 	public List<FlipFitCustomer> list(){
-		return null;
+		return customerRepository.getCustomers();
 	}
+
+	/**
+	 * Authenticates a customer based on provided credentials.
+	 *
+	 * @param name     The name of the customer.
+	 * @param password The password of the customer.
+	 * @return The authenticated customer or null if authentication fails.
+	 */
 	public FlipFitCustomer authenticate(String name, String password) {
 		List<FlipFitCustomer> customers=customerRepository.getCustomers();
 		
@@ -79,6 +120,11 @@ public class FlipFitCustomerService implements FlipFitCustomerServiceInterface{
 		return null;
 	}
 
+	/**
+	 * Retrieves a list of all approved gym centers.
+	 *
+	 * @return A list of all approved gym centers.
+	 */
 	public List<Gym> getAllApprovedGym() {
 		List<Gym> gymList = gymRepository.getAllGyms();
 		List<Gym> approvedGymList = new ArrayList<>();
@@ -92,6 +138,12 @@ public class FlipFitCustomerService implements FlipFitCustomerServiceInterface{
 		return approvedGymList;
 	}
 
+	/**
+	 * Cancels a booking by its ID.
+	 *
+	 * @param bookingId The ID of the booking to be canceled.
+	 * @return A message indicating the success or failure of the cancellation attempt.
+	 */
 	public String cancelBookingById(int bookingId)
 	{
 		if(bookingRepository.cancelBooking(bookingId))

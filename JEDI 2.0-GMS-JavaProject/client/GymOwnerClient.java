@@ -5,13 +5,14 @@ import com.flipkart.gms.beans.FlipFitOwner;
 import com.flipkart.gms.beans.Gym;
 import com.flipkart.gms.beans.Slot;
 import com.flipkart.gms.business.FlipFitOwnerService;
+import com.flipkart.gms.business.FlipFitOwnerServiceInterface;
 
 import java.util.List;
 import java.util.Scanner;
 
 public class GymOwnerClient {
     private Scanner sc;
-    private FlipFitOwnerService flipFitOwnerService = new FlipFitOwnerService();
+    private final FlipFitOwnerServiceInterface flipFitOwnerService = new FlipFitOwnerService();
     public void ownerMenu(int ownerId, boolean approved)
     {
         if(!approved)
@@ -81,7 +82,7 @@ public class GymOwnerClient {
         {
 			System.out.printf("%-15s\t", "No");
         }
-        System.out.println("");
+        System.out.println();
     }
 
     private void viewAllSlots(int ownerId)
@@ -109,7 +110,7 @@ public class GymOwnerClient {
         for(Slot slot : allSlots) {
             System.out.printf("%-15s\t", slot.getId());
             System.out.printf("%-15s\t", slot.getTime());
-            System.out.println("");
+            System.out.println();
         }
         System.out.println("-------------------------------------");
     }
@@ -156,7 +157,7 @@ public class GymOwnerClient {
             {
 				System.out.printf("%-15s\t", "No");
             }
-            System.out.println("");
+            System.out.println();
         }
         System.out.println("-------------------------------------");
     }

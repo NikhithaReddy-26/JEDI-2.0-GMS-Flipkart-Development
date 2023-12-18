@@ -11,51 +11,53 @@ import com.flipkart.gms.dao.AdminRepositoryInterface;
 
 import java.util.ArrayList;
 
+/**
+ * Represents authentication services for users (Admin, Customer, Gym Owner).
+ */
 public class UserAuthService implements UserAuthServiceInterface {
-	public  FlipFitCustomerServiceInterface customerService=new FlipFitCustomerService();
-	public FlipFitOwnerServiceInterface ownerService=new FlipFitOwnerService();
-	public AdminRepositoryInterface adminRepository=new AdminRepository();
+
+	public  FlipFitCustomerServiceInterface customerService = new FlipFitCustomerService();
+	public FlipFitOwnerServiceInterface ownerService = new FlipFitOwnerService();
+	public AdminRepositoryInterface adminRepository = new AdminRepository();
+
 	private final AdminClient adminClient = new AdminClient();
-
 	private final CustomerClient customerClient = new CustomerClient();
-
 	private final GymOwnerClient gymOwnerClient = new GymOwnerClient();
 
-	public void login(String username,String password,String role) {
-			
-			if(role.equals("admin")) {
-				ArrayList<Admin> adminList = adminRepository.getAdminList();
-				for(Admin admin:adminList)
-				{
-					if(admin.getName().equals(username) && admin.getPassword().equals(password))
-					{
-						adminClient.adminPage();
-						return;
-					}
-				}
-				System.out.println("Invalid Credentials or Role");
-			}
-			else if(role.equals("customer") ) {
-				FlipFitCustomer customer=customerService.authenticate(username, password);
-				if(customer==null) {
-					System.out.println("wrong credentials");
-				}
-				else {
-					customerClient.customerMenu(customer.getId());
+	/**
+	 * Authenticates user login based on provided credentials and role.
+	 *
+	 * @param username The username of the user.
+	 * @param password The password of the user.
+	 * @param role     The role of the user (admin, customer, owner).
+	 */
+	public void login(String username, String password, String role) {
+
+		if (role.equals("admin")) {
+			ArrayList<Admin> adminList = adminRepository.getAdminList();
+			for (Admin admin : adminList) {
+				if (admin.getName().equals(username) && admin.getPassword().equals(password)) {
+					adminClient.adminPage();
+					return;
 				}
 			}
-			else if(role.equals("owner")) {
-				FlipFitOwner owner=ownerService.authenticate(username, password);
-				if(owner==null) {
-					System.out.println("wrong credentials for owner");
-				}
-				else {
-					gymOwnerClient.ownerMenu(owner.getId(),owner.isApproved());
-				}
+			System.out.println("Invalid Credentials or Role");
+		} else if (role.equals("customer")) {
+			FlipFitCustomer customer = customerService.authenticate(username, password);
+			if (customer == null) {
+				System.out.println("Wrong credentials");
+			} else {
+				customerClient.customerMenu(customer.getId());
 			}
-			else {
-				System.out.println("wrong credentials or role");
+		} else if (role.equals("owner")) {
+			FlipFitOwner owner = ownerService.authenticate(username, password);
+			if (owner == null) {
+				System.out.println("Wrong credentials for owner");
+			} else {
+				gymOwnerClient.ownerMenu(owner.getId(), owner.isApproved());
 			}
-			
+		} else {
+			System.out.println("Wrong credentials or role");
 		}
+	}
 }
