@@ -4,8 +4,6 @@ package com.flipkart.gms.beans;
 import lombok.Data;
 
 @Data
-public class Admin {
+public class Admin extends User{
 
-	private String name;
-	private String password;
 }
