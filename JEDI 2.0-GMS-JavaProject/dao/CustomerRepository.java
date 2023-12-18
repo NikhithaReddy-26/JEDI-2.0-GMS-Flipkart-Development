@@ -24,5 +24,6 @@ public class CustomerRepository implements CustomerRepositoryInterface{
 		flipFitCustomer.setAddress(address);
 		flipFitCustomer.setName(name);
 		flipFitCustomer.setPassword(password);
+		customers.add(flipFitCustomer);
 	}
 }
