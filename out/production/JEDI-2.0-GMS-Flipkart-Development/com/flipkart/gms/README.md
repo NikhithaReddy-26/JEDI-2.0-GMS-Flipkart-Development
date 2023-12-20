@@ -1,1 +1,0 @@
-# JEDI-2.0-GMS-Flipkart-Development
